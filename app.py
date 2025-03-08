@@ -1,10 +1,15 @@
 from flask import Flask, request, jsonify
 import openai
+from dotenv import load_dotenv
+import os
+
+# ✅ Load environment variables from .env file
+load_dotenv()
+
+# ✅ Fetch the OpenAI API Key from .env file
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 app = Flask(__name__)
-
-# ✅ Your OpenAI API Key (I will show you how to get it later)
-openai.api_key = "XXXXXXXXXXXX"
 
 @app.route('/chat', methods=['POST'])
 def chat():
